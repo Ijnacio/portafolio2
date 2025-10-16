@@ -2,10 +2,10 @@ import { Github, Linkedin, Download } from "lucide-react";
 
 export default function HeaderActions() {
     return (
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center gap-2 md:gap-4">
             {/* Botón de CV */}
             <a
-                className="px-5 py-2 border border-neon-cyan text-neon-cyan rounded-xl hover:bg-neon-cyan hover:text-black transition-all duration-300 font-semibold text-sm flex items-center gap-2"
+                className="px-3 md:px-5 py-1.5 md:py-2 border border-neon-cyan text-neon-cyan rounded-xl hover:bg-neon-cyan hover:text-black transition-all duration-300 font-semibold text-xs md:text-sm flex items-center gap-2 whitespace-nowrap"
                 href="../assets/pdf/CV.pdf"
                 download="CV-Ignacio-Sobarzo.pdf"
                 style={{

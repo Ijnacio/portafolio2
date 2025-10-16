@@ -24,7 +24,7 @@
     }
 
     body {
-        @apply bg-space-blue text-cosmic-white antialiased;
+        @apply bg-space-blue text-cosmic-white antialiased overflow-x-hidden min-h-screen w-full;
     }
 }
 

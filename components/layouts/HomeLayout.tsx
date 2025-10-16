@@ -12,10 +12,10 @@ export default function HomeLayout() {
         return (
         <>
             <LoadingScreen />
-            <div className="relative text-cosmic-white font-inter">
+            <div className="relative text-cosmic-white font-inter overflow-x-hidden w-full">
             <SpaceBackground />
             <Header />
-            <main className="relative z-10">
+            <main className="relative z-10 overflow-x-hidden w-full">
                 <Hero />
                 <About />
                 <Skills />
