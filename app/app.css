@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/* Definir colores personalizados en v4 */
+@theme {
+    --color-neon: #d946ef;
+    --color-neon-magenta: #d946ef;
+    --color-neon-light: #f0abfc;
+    --color-neon-cyan: #00f6ff;
+    --color-cosmic-white: #e0e1f0;
+    --color-lavender-gray: #a0a3c2;
+    --color-space-blue: #0a0c27;
+
+    --font-family-exo: 'Exo 2', sans-serif;
+    --font-family-inter: 'Inter', sans-serif;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    * {
+        scroll-behavior: auto;
+    }
+
+    body {
+        @apply bg-space-blue text-cosmic-white antialiased;
+    }
+}
+
+@layer utilities {
+    .text-shadow-neon {
+        text-shadow: 0 0 8px currentColor, 0 0 16px currentColor;
+    }
+
+    .text-shadow-soft {
+        text-shadow: 0 0 3px currentColor;
+    }
+
+    .shadow-glow-subtle {
+        box-shadow: 0 0 10px rgba(217, 70, 239, 0.5);
+    }
+
+    .shadow-glow-intense {
+        box-shadow: 0 0 20px rgba(217, 70, 239, 0.8), 0 0 40px rgba(217, 70, 239, 0.4);
+    }
+
+    .bg-space-gradient {
+        background: radial-gradient(ellipse at top, #1a1c3a 0%, #0a0c27 50%, #000000 100%);
+    }
+
+    .bg-dark-glass {
+        background-color: rgba(26, 28, 58, 0.8);
+    }
+
+    .glow-text {
+        text-shadow:
+                0 0 10px rgba(217, 70, 239, 0.8),
+                0 0 20px rgba(217, 70, 239, 0.6),
+                0 0 30px rgba(217, 70, 239, 0.4);
+    }
+
+    .glow-border {
+        box-shadow:
+                0 0 10px rgba(217, 70, 239, 0.5),
+                inset 0 0 10px rgba(217, 70, 239, 0.2);
+    }
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0c27;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #d946ef, #f0abfc);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #f0abfc, #d946ef);
+}
