@@ -5,6 +5,7 @@ import NavLinks from "../../atoms/header/NavLinks";
 import HeaderActions from "../../atoms/header/HeaderActions";
 
 export default function Header() {
+    console.log("jojojo prueba git")
     return (
         <motion.header
             initial={{ opacity: 0, y: -20 }}
