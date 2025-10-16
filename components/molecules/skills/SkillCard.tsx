@@ -1,4 +1,3 @@
-// app/components/molecules/skills/SkillCard.tsx
 import { motion } from "framer-motion";
 
 interface SkillCardProps {
