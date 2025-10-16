@@ -6,7 +6,7 @@ export default function HeaderActions() {
             {/* Botón de CV */}
             <a
                 className="px-5 py-2 border border-neon-cyan text-neon-cyan rounded-xl hover:bg-neon-cyan hover:text-black transition-all duration-300 font-semibold text-sm flex items-center gap-2"
-                href="/cv-ignacio-sobarzo.pdf"
+                href="../assets/pdf/CV.pdf"
                 download="CV-Ignacio-Sobarzo.pdf"
                 style={{
                     boxShadow: '0 0 10px rgba(0, 246, 255, 0.3)'

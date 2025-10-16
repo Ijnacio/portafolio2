@@ -4,25 +4,26 @@ const myProjects = [
     {
         title: "API REST para Gestión de Herramientas",
         description: "Participé en el desarrollo de una API RESTful para un sistema de gestión. Fui responsable del diseño del esquema de la base de datos SQL y la implementación de endpoints clave usando Java y Spring.",
-        imageUrl: "/assets/images/project-constructora.png",
+        imageUrl: "assets/img/Herramientas1.png", // Se puede poner Herramientas2.png si se prefiere.
         tags: ["Java", "Spring", "SQL", "Maven", "Postman"],
-        codeLink: "https://github.com/tu-usuario/link-a-tu-proyecto-1",
+        codeLink: "https://github.com/BastianEd/Inventario_Herramientas_Constructora",
         demoLink: "#",
     },
+    
     {
         title: "Mi Portafolio Personal",
         description: "Diseño y desarrollo de mi portafolio personal utilizando React, TypeScript y TailwindCSS, enfocado en un diseño moderno, responsivo y con animaciones fluidas.",
-        imageUrl: "/assets/images/project-portafolio.png",
+        imageUrl: "assets/img/Portafolio.png",
         tags: ["React", "TypeScript", "TailwindCSS", "Framer Motion"],
         codeLink: "https://github.com/tu-usuario/link-a-este-portafolio",
         demoLink: "#",
     },
     {
-        title: "Próximo Proyecto: IA & Automatización",
-        description: "Actualmente explorando conceptos de Machine Learning y automatización de procesos. ¡Pronto habrá más detalles sobre esta nueva aventura tecnológica!",
-        imageUrl: "/assets/images/project-coming-soon.png",
-        tags: ["AI", "Machine Learning", "Python"],
-        codeLink: "#",
+        title: "FletesExpres - App de Gestión y Seguimiento",
+        description: "En desarrollo: app Android en Kotlin para gestionar y rastrear envíos en tiempo real. Uso SQL para la estructura de datos, Gradle y Android Studio para el build, e integración de GPS/Google Maps para el seguimiento. ",
+        imageUrl: "assets/img/Fletes2.png",
+        tags: ["Kotlin", "Android Studio", "Gradle", "SQL", "GPS", "Google Maps"],
+        codeLink: "https://github.com/Ijnacio/RestApp",
         demoLink: "#",
     },
 ];

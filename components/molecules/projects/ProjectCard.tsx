@@ -12,7 +12,7 @@ interface ProjectCardProps {
 export default function ProjectCard({ title, description, imageUrl, tags, codeLink, demoLink }: ProjectCardProps) {
     return (
         <motion.div
-            className="bg-dark-glass backdrop-blur-lg rounded-xl overflow-hidden border border-neon/20 transform hover:-translate-y-2"
+            className="bg-dark-glass backdrop-blur-lg rounded-xl overflow-hidden border border-neon/20 transform hover:-translate-y-2 flex flex-col h-full"
             whileHover={{
                 boxShadow: "0 0 20px rgba(217, 70, 239, 0.4), 0 0 40px rgba(217, 70, 239, 0.2)"
             }}
@@ -21,10 +21,10 @@ export default function ProjectCard({ title, description, imageUrl, tags, codeLi
                 boxShadow: "0 0 10px rgba(217, 70, 239, 0.2)"
             }}
         >
-            <img alt={`Imagen del proyecto ${title}`} className="w-full h-48 object-cover" src={imageUrl} />
-            <div className="p-6 flex flex-col flex-grow">
+            <img alt={`Imagen del proyecto ${title}`} className="w-full h-80 object-cover" src={imageUrl} />
+            <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-xl font-bold font-exo text-cosmic-white">{title}</h3>
-                <p className="mt-2 text-lavender-gray text-sm flex-grow">{description}</p>
+                <p className="mt-2 text-lavender-gray text-sm flex-1">{description}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                     {tags.map((tag) => (
                         <span
