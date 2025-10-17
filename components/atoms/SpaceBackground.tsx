@@ -1,93 +1,196 @@
 "use client";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+import type { Engine } from "@tsparticles/engine";
 
 export default function SpaceBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [particlesInit, setParticlesInit] = useState(false);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    // Inicializar partículas
+    useEffect(() => {
+        initParticlesEngine(async (engine: Engine) => {
+            await loadSlim(engine);
+        }).then(() => {
+            setParticlesInit(true);
+        });
+    }, []);
 
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    // Canvas de estrellas parpadeantes
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
 
-    // Configurar tamaño del canvas
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
 
-    // Crear estrellas
-    const stars: { x: number; y: number; radius: number; opacity: number; twinkleSpeed: number }[] = [];
-    const numStars = 200;
-
-    for (let i = 0; i < numStars; i++) {
-      stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 1.5,
-        opacity: Math.random(),
-        twinkleSpeed: Math.random() * 0.02 + 0.01,
-      });
-    }
-
-    // Animación
-    let animationFrame: number;
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Dibujar estrellas
-      stars.forEach((star) => {
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        // Configurar tamaño del canvas
+        const resizeCanvas = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = Math.max(
+                document.body.scrollHeight,
+                document.documentElement.scrollHeight,
+                document.body.offsetHeight,
+                document.documentElement.offsetHeight,
+                document.body.clientHeight,
+                document.documentElement.clientHeight
+            );
+        };
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
         
-        // Efecto de parpadeo
-        star.opacity += star.twinkleSpeed;
-        if (star.opacity > 1 || star.opacity < 0) {
-          star.twinkleSpeed = -star.twinkleSpeed;
+        // Observar cambios en el DOM
+        const observer = new MutationObserver(resizeCanvas);
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        // Crear estrellas
+        const stars: { x: number; y: number; radius: number; opacity: number; twinkleSpeed: number }[] = [];
+        const numStars = 300; // Aumenté la cantidad
+
+        for (let i = 0; i < numStars; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2, // Más variedad de tamaños
+                opacity: Math.random(),
+                twinkleSpeed: Math.random() * 0.02 + 0.01,
+            });
         }
 
-        ctx.fillStyle = `rgba(224, 225, 240, ${star.opacity})`;
-        ctx.fill();
+        // Animación
+        let animationFrame: number;
+        const animate = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Brillo neón ocasional
-        if (Math.random() > 0.995) {
-          ctx.shadowBlur = 10;
-          ctx.shadowColor = '#d946ef';
-          ctx.fillStyle = '#d946ef';
-          ctx.fill();
-          ctx.shadowBlur = 0;
-        }
-      });
+            // Dibujar estrellas
+            stars.forEach((star) => {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
 
-      animationFrame = requestAnimationFrame(animate);
-    };
-    animate();
+                // Efecto de parpadeo
+                star.opacity += star.twinkleSpeed;
+                if (star.opacity > 1 || star.opacity < 0) {
+                    star.twinkleSpeed = -star.twinkleSpeed;
+                }
 
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(animationFrame);
-    };
-  }, []);
+                ctx.fillStyle = `rgba(224, 225, 240, ${star.opacity})`;
+                ctx.fill();
 
-  return (
-    <>
-      {/* Gradiente de fondo */}
-      <div className="fixed inset-0 bg-space-gradient -z-20" />
-      
-      {/* Canvas para estrellas */}
-      <canvas
-        ref={canvasRef}
-        className="fixed inset-0 -z-10 opacity-80"
-      />
-      
-      {/* Efectos de luz neón */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-neon-magenta/10 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-neon-cyan/10 rounded-full blur-[100px] animate-pulse delay-1000" />
-      </div>
-    </>
-  );
+                // Brillo neón ocasional (más frecuente)
+                if (Math.random() > 0.993) {
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = Math.random() > 0.5 ? '#d946ef' : '#00f6ff';
+                    ctx.fillStyle = Math.random() > 0.5 ? '#d946ef' : '#00f6ff';
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            });
+
+            animationFrame = requestAnimationFrame(animate);
+        };
+        animate();
+
+        return () => {
+            window.removeEventListener('resize', resizeCanvas);
+            observer.disconnect();
+            cancelAnimationFrame(animationFrame);
+        };
+    }, []);
+
+    return (
+        <>
+            {/* Gradiente de fondo */}
+            <div className="fixed inset-0 bg-space-gradient -z-20 pointer-events-none" />
+
+            {/* Canvas para estrellas parpadeantes */}
+            <canvas
+                ref={canvasRef}
+                className="absolute top-0 left-0 w-full -z-15 opacity-80 pointer-events-none"
+            />
+
+            {/* Partículas interactivas de tsparticles */}
+            {particlesInit && (
+                <Particles
+                    id="tsparticles"
+                    className="fixed inset-0 -z-10 pointer-events-auto"
+                    options={{
+                        background: {
+                            color: {
+                                value: "transparent",
+                            },
+                        },
+                        fpsLimit: 120,
+                        interactivity: {
+                            events: {
+                                onClick: {
+                                    enable: true,
+                                    mode: "push",
+                                },
+                                onHover: {
+                                    enable: true,
+                                    mode: "grab",
+                                },
+                            },
+                            modes: {
+                                push: {
+                                    quantity: 3,
+                                },
+                                grab: {
+                                    distance: 150,
+                                    links: {
+                                        opacity: 0.5,
+                                    },
+                                },
+                            },
+                        },
+                        particles: {
+                            color: {
+                                value: ["#d946ef", "#00f6ff", "#f0abfc"],
+                            },
+                            links: {
+                                color: "#d946ef",
+                                distance: 120,
+                                enable: true,
+                                opacity: 0.15,
+                                width: 1,
+                            },
+                            move: {
+                                direction: "none",
+                                enable: true,
+                                outModes: {
+                                    default: "bounce",
+                                },
+                                random: true,
+                                speed: 0.5,
+                                straight: false,
+                            },
+                            number: {
+                                density: {
+                                    enable: true,
+                                },
+                                value: 50, // Menos partículas para no saturar
+                            },
+                            opacity: {
+                                value: { min: 0.2, max: 0.6 },
+                            },
+                            shape: {
+                                type: "circle",
+                            },
+                            size: {
+                                value: { min: 1, max: 3 },
+                            },
+                        },
+                        detectRetina: true,
+                    }}
+                />
+            )}
+
+            {/* Efectos de luz neón */}
+            <div className="fixed inset-0 -z-12 pointer-events-none">
+                <div className="absolute top-0 left-1/4 w-96 h-96 bg-neon-magenta/10 rounded-full blur-[100px] animate-pulse" />
+                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-neon-cyan/10 rounded-full blur-[100px] animate-pulse" />
+            </div>
+        </>
+    );
 }
