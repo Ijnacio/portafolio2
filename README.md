@@ -1,61 +1,75 @@
-# Welcome to React Router!
+# Bienvenido a React Router (SSR + Vite + Tailwind)
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Plantilla moderna y lista para producción para construir aplicaciones React full‑stack con React Router.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+[![Abrir en StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
 
-## Features
+## Características
 
-- 🚀 Server-side rendering
+- 🚀 Renderizado del lado del servidor (SSR)
 - ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- 📦 Empaquetado y optimización de assets
+- 🔄 Carga de datos y mutaciones con React Router
+- 🔒 TypeScript por defecto
+- 🎉 Tailwind CSS para estilos
+- 📖 Documentación: https://reactrouter.com/
 
-## Getting Started
+## Requisitos
 
-### Installation
+- Node.js >= 18.17
+- npm >= 9 (o pnpm/bun si lo prefieres)
 
-Install the dependencies:
+## Instalación
 
 ```bash
 npm install
 ```
 
-### Development
+## Desarrollo
 
-Start the development server with HMR:
+Inicia el servidor de desarrollo con HMR:
 
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+Aplicación disponible en `http://localhost:5173`.
 
-## Building for Production
 
-Create a production build:
+## Scripts disponibles
+
+- `npm run dev`: servidor de desarrollo (HMR)
+- `npm run build`: compila para producción
+- `npm run start`: ejecuta el servidor de producción usando la build existente
+- `npm run preview`: build + start en una sola orden
+- `npm run typecheck`: genera tipos de rutas y verifica TypeScript
+
+## Compilar para producción
 
 ```bash
 npm run build
 ```
 
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
+## Ejecutar en producción
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+npm run start
+# o
+npm run preview
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+## Despliegue
+
+### Docker
+
+Construir y ejecutar con Docker:
+
+```bash
+docker build -t portafolio2 .
+docker run -p 3000:3000 portafolio2
+```
+
+Se puede desplegar en cualquier plataforma con soporte Docker, por ejemplo:
 
 - AWS ECS
 - Google Cloud Run
@@ -64,24 +78,22 @@ The containerized application can be deployed to any platform that supports Dock
 - Fly.io
 - Railway
 
-### DIY Deployment
+### Despliegue DIY (sin Docker)
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
+El servidor incorporado es apto para producción. Asegúrate de desplegar la salida de `npm run build`:
 
 ```
 ├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
+├── package-lock.json (o pnpm-lock.yaml, o bun.lockb)
 ├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+│   ├── client/    # Assets estáticos
+│   └── server/    # Código del servidor
 ```
 
-## Styling
+## Estilos
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+Esta plantilla ya incluye Tailwind CSS configurado. Puedes usar cualquier framework CSS de tu preferencia.
 
 ---
 
-Built with ❤️ using React Router.
+Construido con ❤️ usando React Router.
