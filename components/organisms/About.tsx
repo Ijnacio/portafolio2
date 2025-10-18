@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 export default function About() {
     return (
         <section id="about" className="py-20 relative">
-            {/* Resplandor de fondo */}
             <div className="absolute top-1/2 left-1/3 w-[700px] h-[700px] bg-neon-magenta opacity-10 blur-[150px] rounded-full pointer-events-none"></div>
             
             <div className="container mx-auto px-6 relative z-10">
@@ -14,15 +13,12 @@ export default function About() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                     className="text-4xl font-exo font-bold text-center mb-16 text-neon"
-                    style={{
-                        textShadow: '0 0 15px rgba(217, 70, 239, 0.7), 0 0 30px rgba(217, 70, 239, 0.4)'
-                    }}
+                    style={{ textShadow: '0 0 15px rgba(217, 70, 239, 0.7), 0 0 30px rgba(217, 70, 239, 0.4)' }}
                 >
                     Sobre Mí
                 </motion.h2>
 
                 <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-                    {/* Imagen */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -40,7 +36,6 @@ export default function About() {
                         </div>
                     </motion.div>
 
-                    {/* Texto */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}

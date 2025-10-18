@@ -1,13 +1,21 @@
+// components/organisms/Hero.tsx
 "use client";
 import { motion } from "framer-motion";
 
 export default function Hero() {
+    const resplandorTitulo = {
+        textShadow: '0 0 20px rgba(217, 70, 239, 0.8), 0 0 40px rgba(217, 70, 239, 0.6), 0 0 60px rgba(217, 70, 239, 0.4)'
+    };
+
+    const resplandorSubtitulo = {
+        textShadow: '0 0 10px rgba(217, 70, 239, 0.6), 0 0 20px rgba(217, 70, 239, 0.4)'
+    };
+
     return (
         <section
             id="home"
             className="container mx-auto px-6 text-center min-h-screen flex flex-col justify-center items-center relative"
         >
-            {/* Efecto de resplandor de fondo */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="w-[600px] h-[400px] bg-neon-magenta opacity-20 blur-[120px] rounded-full"></div>
             </div>
@@ -17,9 +25,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="text-4xl sm:text-5xl md:text-7xl font-exo font-black uppercase text-neon-magenta relative z-10 px-4"
-                style={{
-                    textShadow: '0 0 20px rgba(217, 70, 239, 0.8), 0 0 40px rgba(217, 70, 239, 0.6), 0 0 60px rgba(217, 70, 239, 0.4)'
-                }}
+                style={resplandorTitulo}
             >
                 IGNACIO SOBARZO
             </motion.h1>
@@ -29,9 +35,7 @@ export default function Hero() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="text-lg sm:text-xl md:text-2xl text-neon-magenta font-semibold mt-4 relative z-10 px-4"
-                style={{
-                    textShadow: '0 0 10px rgba(217, 70, 239, 0.6), 0 0 20px rgba(217, 70, 239, 0.4)'
-                }}
+                style={resplandorSubtitulo}
             >
                 SOFTWARE DEVELOPER | AI & DATA SCIENCE ENTHUSIAST
             </motion.p>
