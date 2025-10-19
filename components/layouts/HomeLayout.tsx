@@ -7,6 +7,7 @@ import Contact from "../organisms/Contact";
 import Footer from "../organisms/Footer";
 import SpaceBackground from "../atoms/SpaceBackground";
 import LoadingScreen from "components/atoms/LoadingScreen";
+import Certificados from "components/organisms/Certificados";
 
 export default function HomeLayout() {
         return (
@@ -18,6 +19,7 @@ export default function HomeLayout() {
             <main className="relative z-10 overflow-x-hidden w-full">
                 <Hero />
                 <About />
+                <Certificados />
                 <Skills />
                 <Projects />
                 <Contact />
