@@ -15,7 +15,7 @@ const myProjects = [
         description: "Diseño y desarrollo de mi portafolio personal utilizando React, TypeScript y TailwindCSS, enfocado en un diseño moderno, responsivo y con animaciones fluidas.",
         imageUrl: "assets/img/Portafolio.png",
         tags: ["React", "TypeScript", "TailwindCSS", "Framer Motion"],
-        codeLink: "https://github.com/tu-usuario/link-a-este-portafolio",
+        codeLink: "https://github.com/Ijnacio/portafolio2",
         demoLink: "#",
     },
     {
