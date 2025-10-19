@@ -16,7 +16,7 @@ describe('Header', () => {
     it('debe renderizar los componentes principales', () => {
         render(<Header />);
         expect(screen.getByText('Logo')).toBeInTheDocument();
-        expect(screen.getByText('NavLinks')).toBeInTheDocument();
+        expect(screen.getAllByText('NavLinks')).toHaveLength(2);
         expect(screen.getByText('Actions')).toBeInTheDocument();
     });
 
