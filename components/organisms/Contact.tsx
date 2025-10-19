@@ -1,7 +1,7 @@
 // components/organisms/Contact.tsx
 "use client";
 import { motion } from "framer-motion";
-import { Mail, MessageCircle, Linkedin, Github } from "lucide-react";
+import { Mail, MessageCircle, Linkedin, Github } from 'lucide-react';
 
 export default function Contact() {
     const metodosContacto = [
