@@ -29,7 +29,7 @@ export default function About() {
                         <div className="relative group">
                             <div className="absolute inset-0 bg-neon-magenta/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
                             <img 
-                                src="/assets/img/unnamed.png" 
+                                src="/assets/img/yo.jpg" 
                                 alt="Ignacio Sobarzo" 
                                 className="relative rounded-2xl w-80 h-80 object-cover border-2 border-neon/30 shadow-lg"
                             />
